@@ -12,7 +12,7 @@ import sys
 import os
 import shutil
 import concurrent.futures
-import subprocess:quit
+import subprocess
 import pipes
 
     
