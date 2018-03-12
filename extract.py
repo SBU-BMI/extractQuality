@@ -15,8 +15,6 @@ import concurrent.futures
 import subprocess
 import pipes
 
-    
-    
 if __name__ == '__main__':
   # Check arguments and display usage
   if len(sys.argv)<1:
