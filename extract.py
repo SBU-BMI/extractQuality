@@ -18,6 +18,7 @@ import pipes
     
     
 if __name__ == '__main__':
+  # Check arguments and display usage
   if len(sys.argv)<1:
     print("usage:python composite_dataset3.py  case_id exec_id")
     exit()
@@ -25,7 +26,7 @@ if __name__ == '__main__':
   caseid = sys.argv[1]
   execid = sys.argv[2]
 
-
+  # Display arguments 
   print (sys.argv)
   
   start_time = time.time()
@@ -34,14 +35,13 @@ if __name__ == '__main__':
   db_host="hedwig.bmi.stonybrook.edu"
   db_port="27017"
   #multiple process number
-  max_workers=16;
+  max_workers=16
   
-  client = MongoClient('mongodb://'+db_host+':'+db_port+'/');
-  db = client.quip;
-  # objects = db.objects;
-  # metadata=db.metadata;
-  #
-  # input_file="caseid_perfix_algorithm.txt"
+  client = MongoClient('mongodb://'+db_host+':'+db_port+'/')
+  db = client.quip
+  objects = db.objects
+  metadata = db.metadata
+  
   # analysis_list_csv = os.path.join(my_home, input_file);
   # if not os.path.isfile(analysis_list_csv):
   #   print "caseid_perfix_algorithm file is not available."
@@ -382,5 +382,5 @@ if __name__ == '__main__':
   #
   # print "--- end of program --- ";
   elapsed_time = time.time() - start_time  
-  print ("total time to run whole program is "+str(elapsed_time/60.00)+ ' minutes.');
+  print ("total time to run whole program is "+str(elapsed_time/60.00)+ ' minutes.')
   exit();
