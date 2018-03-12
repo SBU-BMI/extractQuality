@@ -19,7 +19,7 @@ import pipes
     
 if __name__ == '__main__':
   if len(sys.argv)<1:
-    print("usage:python composite_dataset3.py  case_id exec_id")
+    print("usage:python extract.py  case_id exec_id")
     exit()
     
   caseid = sys.argv[1]
