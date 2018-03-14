@@ -18,7 +18,8 @@ import pipes
 if __name__ == '__main__':
   # Check arguments and display usage
   if len(sys.argv)<1:
-    print("usage:python composite_dataset3.py  case_id exec_id")
+    print("usage:python composite_dataset3.py case_id exec_id")
+    print("")
     exit()
     
   caseid = sys.argv[1]
