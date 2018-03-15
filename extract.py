@@ -18,12 +18,12 @@ import pipes
 if __name__ == '__main__':
     # Check arguments and display usage
     if len(sys.argv)<1:
-      print("usage:python composite_dataset3.py case_id exec_id")
-      exit()
+        print("usage:python extract.py case_id exec_id")
+        exit()
     caseid = sys.argv[1]
     execid = sys.argv[2]
 
-    # Display arguments 
+    # Display arguments
     print (sys.argv)
   
     start_time = time.time()
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     db = client.quip
     objects = db.objects
     metadata = db.metadata
-  
+
     # analysis_list_csv = os.path.join(my_home, input_file);
     # if not os.path.isfile(analysis_list_csv):
     #   print "caseid_perfix_algorithm file is not available."
