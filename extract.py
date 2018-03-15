@@ -11,7 +11,7 @@ import csv
 import sys
 import os
 import shutil
-import concurrent.futures
+##import concurrant.futures
 import subprocess
 import pipes
 
@@ -22,9 +22,6 @@ if __name__ == '__main__':
         exit()
     caseid = sys.argv[1]
     execid = sys.argv[2]
-
-    # Display arguments
-    print (sys.argv)
   
     start_time = time.time()
     my_home="."
@@ -38,6 +35,8 @@ if __name__ == '__main__':
     db = client.quip
     objects = db.objects
     metadata = db.metadata
+    muByCidQuery = {'object_type': 'marking','provenance.image.case_id': caseid}
+    print(objects.find(muByCidQuery))
 
     # analysis_list_csv = os.path.join(my_home, input_file);
     # if not os.path.isfile(analysis_list_csv):
