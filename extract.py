@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from shapely.geometry import Point
 from shapely.geometry import LineString
 from shapely.geometry.polygon import LinearRing
 from shapely.geometry import Polygon
@@ -22,7 +23,7 @@ if __name__ == '__main__':
         exit()
     caseid = sys.argv[1]
     execid = sys.argv[2]
-  
+    regionsToDownload = []
     start_time = time.time()
     my_home="."
     out_dir  =os.path.join(my_home, 'composite_results/')
@@ -30,13 +31,21 @@ if __name__ == '__main__':
     db_port="27017"
     #multiple process number
     max_workers=16
+    pp = pprint.PrettyPrinter(indent=4)
 
     client = MongoClient('mongodb://'+db_host+':'+db_port+'/')
     db = client.quip
     objects = db.objects
     metadata = db.metadata
-    muByCidQuery = {'object_type': 'marking','provenance.image.case_id': caseid}
-    print(objects.find(muByCidQuery))
+    heatmapsByCidQuery = {'object_type': 'heatmap_quality','provenance.analysis.execution_id': execid}
+    muByCidQuery = {'object_type': 'marking','provenance.image.case_id': caseid, 'properties.annotations.mark_eid': execid}
+    qheatmaps = objects.find(heatmapsByCidQuery)
+    markups = objects.find(muByCidQuery)
+    for heatmap in qheatmaps:
+        pp.pprint(heatmap)
+    print("-------------------------------------")
+    for item in markups:
+        pp.pprint(item['provenance'])
 
     # analysis_list_csv = os.path.join(my_home, input_file);
     # if not os.path.isfile(analysis_list_csv):
