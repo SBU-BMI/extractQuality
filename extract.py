@@ -40,13 +40,27 @@ if __name__ == '__main__':
     heatmapsByCidQuery = {'object_type': 'heatmap_quality','provenance.analysis.execution_id': execid}
     muByCidQuery = {'object_type': 'marking','provenance.image.case_id': caseid, 'properties.annotations.mark_eid': execid}
     qheatmaps = objects.find(heatmapsByCidQuery)
-    markups = objects.find(muByCidQuery)
+    markups = list(objects.find(muByCidQuery))
+    print("No. of heatmaps Tiles count: ", qheatmaps.count())
+    print("Total Markup count: ", len(markups))
     for heatmap in qheatmaps:
-        pp.pprint(heatmap)
-    print("-------------------------------------")
-    for item in markups:
-        pp.pprint(item['provenance'])
+        icount = 0
+        currentTile = heatmap
+        currentPolygon = Polygon(currentTile['geometry']['coordinates'][0])
+        for markup in markups:
 
+            muX = markup['x']
+            muY = markup['y']
+            muPoint = Point((muX,muY))
+            if currentPolygon.intersects(muPoint):
+                regionsToDownload.append(currentTile)
+                icount += 1
+                break
+
+#        for item in regionsToDownload:
+#            pp.pprint(item)
+    print("No. of regions to download: ",len(regionsToDownload))
+    
     # analysis_list_csv = os.path.join(my_home, input_file);
     # if not os.path.isfile(analysis_list_csv):
     #   print "caseid_perfix_algorithm file is not available."
