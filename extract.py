@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 from pymongo import MongoClient
 from shapely.geometry import Point
 from shapely.geometry import LineString
@@ -12,7 +13,6 @@ import csv
 import sys
 import os
 import shutil
-import concurrant.futures
 import subprocess
 import pipes
 
