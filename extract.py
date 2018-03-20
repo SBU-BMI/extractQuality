@@ -1,4 +1,5 @@
 #!/usr/local/bin/python3
+# Module Imports
 from pymongo import MongoClient
 from shapely.geometry import Point
 from shapely.geometry import LineString
@@ -15,6 +16,8 @@ import os
 import shutil
 import subprocess
 import pipes
+
+# Function Defs
 
 if __name__ == '__main__':
     # Check arguments and display usage
@@ -60,6 +63,9 @@ if __name__ == '__main__':
 #        for item in regionsToDownload:
 #            pp.pprint(item)
     print("No. of regions to download: ",len(regionsToDownload))
+
+    for tileRegion in regionsToDownload:
+        pp.pprint(tileRegion)
     
     # analysis_list_csv = os.path.join(my_home, input_file);
     # if not os.path.isfile(analysis_list_csv):
