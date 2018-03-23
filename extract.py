@@ -56,6 +56,10 @@ if __name__ == '__main__':
             muY = markup['y']
             muPoint = Point((muX,muY))
             if currentPolygon.intersects(muPoint):
+                if markup['properties']['annotations']['mark_type'] == "AlgoA":
+                    currentTile['properties']['metric_value'] = 0
+                else:
+                    currentTile['properties']['metric_value'] = 1
                 regionsToDownload.append(currentTile)
                 icount += 1
                 break
