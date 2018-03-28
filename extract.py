@@ -63,7 +63,7 @@ if __name__ == '__main__':
                 regionsToDownload.append(currentTile)
                 icount += 1
                 break
-
+#
 #        for item in regionsToDownload:
 #            pp.pprint(item)
     print("No. of regions to download: ",len(regionsToDownload))
